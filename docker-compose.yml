@@ -1,0 +1,40 @@
+#see for java tunning https://docs.oracle.com/cd/E15523_01/web.1111/e13814/jvm_tuning.htm#PERFM161
+version: '3.9'
+services:
+  ##########################################################################
+  #booking service
+  ##########################################################################
+  booking-api:
+    container_name: container-booking-api
+    image: table-reservation/microservice-docker-booking-api:1.0-SNAPSHOT
+    environment:
+      - JAVA_OPTS=
+        -Xms256M
+        -Xmx256M
+    ports:
+      - 8082:8082
+
+  ##########################################################################
+  #restaurant service
+  ##########################################################################
+  restaurant-api:
+    container_name: container-restaurant-api
+    image: table-reservation/microservice-docker-restaurant-api:1.0-SNAPSHOT
+    environment:
+      - JAVA_OPTS=
+        -Xms256M
+        -Xmx256M
+    ports:
+      - 8081:8081
+  ##########################################################################
+  #user service
+  ##########################################################################
+  user-api:
+    container_name: container-user-api
+    image: table-reservation/microservice-docker-user-api:1.0-SNAPSHOT
+    environment:
+      - JAVA_OPTS=
+        -Xms256M
+        -Xmx256M
+    ports:
+      - 8083:8083
